@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        input{
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search</h1>
+    <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Search for books, movies, or tv shows" value="<%= searchQuery %>">
+        <button type="submit">Search Page</button>
+    </form>
+
+    <% if(searchQuery){ %>
+        <h2>Results for "<%= searchQuery %>":</h2>
+        <% if(searchRes.length > 0){ %>
+            <% searchRes.forEach(result =>{ %>
+                <p><%= result.items.join(", ") %></p>
+            <% }) %>
+        <% }
+        else{ %>
+            <p>No results found</p>
+        <% } %>
+    <% } %>
+</body>
+</html>
